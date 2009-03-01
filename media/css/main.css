@@ -1,0 +1,12 @@
+h1 {
+	font-size: 6pt;
+}
+
+#nav { 
+	font-weight: bold;
+	border-bottom: 1px solid #000;
+}
+
+#nav li {
+	display: inline;
+}

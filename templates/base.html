@@ -1,0 +1,20 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+	<head>
+		{% include 'css.html' %}
+		<!--<link rel="stylesheet" type="text/css" href="/media/css/main.css" media="screen">-->
+		<title> {% block title %} {% endblock %} </title>
+	</head>
+	<body>
+		<h1>Wedding</h1>
+		<ul id="nav">
+		{% for name,link in urls.items %}
+			<li>
+				<a href="{{link}}">{{name}}</a> {% if not forloop.last %} | {% endif %}
+			</li>
+		{% endfor %}
+		</ul>
+		{% block content %} {% endblock %} 
+	</body>
+</html>
