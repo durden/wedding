@@ -3,14 +3,14 @@ from django.shortcuts import render_to_response
 from wedding.settings import MEDIA_URL
 
 urls = {
-	'home' : '/', 
-	'blog' : '/blog',
-	'about' : '/about',
-	'rsvp' : '/rsvp',
-	'contact' : '/contact',
-	'maps' : '/maps',
+	'home' 			: '/', 
+	'blog' 			: '/blog',
+	'about' 		: '/about',
+	'rsvp' 			: '/rsvp',
+	'contact' 		: '/contact',
+	'maps' 			: '/maps',
 	'registrations' : '/registrations',
-	'pictures' : '/pictures',
+	'pictures' 		: '/pictures',
 }
 
 def home(request):
