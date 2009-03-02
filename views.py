@@ -23,7 +23,20 @@ def about(request):
 	return render_to_response('about.html', {'urls' : urls})
 
 def rsvp(request):
-	return render_to_response('rsvp.html', {'urls' : urls})
+	if request.method == 'POST':
+		name = request.POST.get('name', '')
+		guests = request.POST.get('guests', '0')
+
+		#FIXME Sanitize input and make sure they aren't already in the db
+
+		if name == '' or guests == 0:
+			return render_to_response('rsvp.html', {'urls' : urls, 'submit' : 1,
+									  'fail' : 1})
+		else:
+			return render_to_response('rsvp.html', {'urls' : urls, 'name' : name,
+									  'guests' : guests, 'submit' : 1, 'fail' : 0})
+	else:
+		return render_to_response('rsvp.html', {'urls' : urls})
 
 def contact(request):
 	return render_to_response('contact.html', {'urls' : urls})

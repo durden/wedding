@@ -3,5 +3,37 @@
 {% block title %} RSVP {% endblock %}
 
 {% block content %}
-	<p>RSVP page content</p>
+
+	{% if submit %}
+		{% if fail %}
+			<p class="error">Please enter your name and the number of guests.</p>
+		{% else %}
+			<p class="success">Thanks, {{name}} for your RSVP.</br>
+				We will be expecting all {{guests}} of you!
+			</p>
+		{% endif %}
+	{% endif %}
+
+	<form action="/rsvp/" id="rsvp" method="post">
+		<fieldset>
+			<legend>Who's Coming</legend>
+			<p>
+				<label for="name">Your name:*</label>
+				<input type="text" id="name" name="name"/>
+			</p>
+			<p>
+				<label for="guests">Guests (including you)*:</label>
+				<select id="guests" name="guests">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+				</select>
+			</p>
+			<input type="submit" value="submit" />
+			<p>* Requried input</p>
+		</fieldset>
+	</form>
 {% endblock %}
