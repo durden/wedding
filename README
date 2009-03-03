@@ -1,0 +1,12 @@
+A simple little django-powered website for my upcoming wedding.  This mainly serves as a
+little tutorial and learning project for django.  I come from php and a bit of ruby on rails
+so need an easy project to pick up the basics.
+
+The project is slated to support the following at a minimum:
+
+- Guests can rsvp to wedding
+- Show maps to wedding/reception sites
+- Blog about wedding news/planning
+- Allow comments from non-registered users on blog posts
+- Allow back-end updating of the majority of the pages instead of static HTML
+- Send e-mail to specified account when rsvp is received
