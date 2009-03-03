@@ -3,7 +3,7 @@ from django.shortcuts import render_to_response
 from wedding.settings import MEDIA_URL
 
 urls = {
-	'home' 			: '/', 
+	'home' 			: '/',
 	'blog' 			: '/blog',
 	'about' 		: '/about',
 	'rsvp' 			: '/rsvp',
