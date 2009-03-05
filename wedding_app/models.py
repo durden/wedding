@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 class Page(models.Model):
 	name = models.CharField(max_length=20)
 	text = models.TextField()
-	updated = models.DateField(auto_now=True)
+	updated = models.DateTimeField(auto_now=True)
 
 	def __unicode__(self):
 		return self.name
@@ -18,7 +18,7 @@ class Rsvp(models.Model):
 		return self.name
 
 class Blog(models.Model):
-	updated = models.DateField(auto_now=True)
+	updated = models.DateTimeField(auto_now=True)
 	author = models.ForeignKey(User)
 	title = models.CharField(max_length=200)
 	text = models.TextField()
