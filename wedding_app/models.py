@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Page(models.Model):
 	name = models.CharField(max_length=20)
@@ -18,7 +19,7 @@ class Rsvp(models.Model):
 
 class Blog(models.Model):
 	updated = models.DateField(auto_now=True)
-	updated_by = models.CharField(max_length=20)
+	author = models.ForeignKey(User)
 	text = models.TextField()
 
 	def __unicode__(self):
