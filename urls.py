@@ -1,13 +1,18 @@
 from django.conf.urls.defaults import *
 from wedding.views import *
 from django.contrib import admin
+from django.conf.urls.defaults import *
+from wedding.wedding_app.models import Blog
+
 admin.autodiscover()
 
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+info = {
+	'queryset' : Blog.objects.all().order_by("-updated"),
+	'date_field' : 'updated',
+	'make_object_list' : True,
+}
 
-urlpatterns = patterns('',
+urlpatterns = patterns('django.views.generic.date_based',
     # Example:
     # (r'^wedding/', include('wedding.foo.urls')),
 
@@ -15,7 +20,6 @@ urlpatterns = patterns('',
     # to INSTALLED_APPS to enable admin documentation:
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
-    # Uncomment the next line to enable the admin:
     (r'^admin/(.*)', admin.site.root),
 	(r'^$', home),
 	(r'^blog/$', blog),
@@ -25,4 +29,7 @@ urlpatterns = patterns('',
 	(r'^maps/$', maps),
 	(r'^registrations/$', registrations),
 	(r'^pictures/$', pictures),
+	(r'^blog/(?P<year>\d{4})/$','archive_year', info),
+	# FIXME
+	#(r'^blog/(?P<year>\d{4})/(?P<month>[a-z]{3})/(?P<day>\w{1,2})/$', 'archive_day', info),
 )
