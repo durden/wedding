@@ -20,6 +20,7 @@ class Rsvp(models.Model):
 class Blog(models.Model):
 	updated = models.DateField(auto_now=True)
 	author = models.ForeignKey(User)
+	title = models.CharField(max_length=200)
 	text = models.TextField()
 
 	def __unicode__(self):
@@ -27,7 +28,7 @@ class Blog(models.Model):
 
 class Comment(models.Model):
 	updated = models.DateField(auto_now=True)
-	updated_by = models.CharField(max_length=20)
+	author = models.CharField(max_length=20)
 	text = models.TextField()
 	blog = models.ForeignKey(Blog)	
 
