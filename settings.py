@@ -69,7 +69,7 @@ ROOT_URLCONF = 'wedding.urls'
 
 TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
-	os.path.join(os.path.dirname(__file__), 'templates'),
+	'/Users/durden/Documents/curr_proj/templates',
 )
 
 INSTALLED_APPS = (
