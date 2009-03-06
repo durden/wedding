@@ -13,7 +13,7 @@ urls = {
 }
 
 def home(request):
-	page = Page.objects.filter(name="Home")
+	page = Page.objects.get(name="Home")
 	return render_to_response('page.html', {'urls' : urls, 'page' : page})
 
 def blog(request):
@@ -21,7 +21,8 @@ def blog(request):
 	return render_to_response('blog.html', {'urls' : urls, 'blogs' : blogs})
 
 def about(request):
-	return render_to_response('about.html', {'urls' : urls})
+	page = Page.objects.get(name="About Us")
+	return render_to_response('page.html', {'urls' : urls, 'page' : page})
 
 def rsvp(request):
 	if request.method == 'POST':
@@ -46,7 +47,8 @@ def maps(request):
 	return render_to_response('maps.html', {'urls' : urls})
 
 def registrations(request):
-	return render_to_response('registrations.html', {'urls' : urls})
+	page = Page.objects.get(name="Registration Places")
+	return render_to_response('page.html', {'urls' : urls, 'page' : page})
 
 def pictures(request):
 	return render_to_response('pictures.html', {'urls' : urls})

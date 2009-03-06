@@ -6,10 +6,11 @@ from wedding.wedding_app.models import Blog
 
 admin.autodiscover()
 
-info = {
+blog_info = {
 	'queryset' : Blog.objects.all().order_by("-updated"),
 	'date_field' : 'updated',
 	'make_object_list' : True,
+	'template_object_name' : 'blogs',
 }
 
 urlpatterns = patterns('django.views.generic.date_based',
@@ -29,7 +30,7 @@ urlpatterns = patterns('django.views.generic.date_based',
 	(r'^maps/$', maps),
 	(r'^registrations/$', registrations),
 	(r'^pictures/$', pictures),
-	(r'^blog/(?P<year>\d{4})/$','archive_year', info),
+	(r'^blog/(?P<year>\d{4})/$','archive_year', blog_info),
 	# FIXME
 	#(r'^blog/(?P<year>\d{4})/(?P<month>[a-z]{3})/(?P<day>\w{1,2})/$', 'archive_day', info),
 )
