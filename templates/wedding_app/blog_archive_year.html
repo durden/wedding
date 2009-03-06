@@ -1,14 +1,3 @@
-{% extends "base.html" %}
+{% extends "blog.html" %}
 
 {% block title %} {{year}} {% endblock %}
-
-{% block content %}
-	{% for blog in object_list %}
-		<div class='blog'>
-			<h4>{{blog.title}}</h4>
-			<p class='blog_txt'>{{blog.text}}</p>
-			<h6>{{blog.author.username}} -- {{blog.updated}}</h6>
-			<hr>
-		</div>
-	{% endfor %}
-{% endblock %}
