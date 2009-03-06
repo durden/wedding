@@ -1,6 +1,5 @@
 from django.shortcuts import render_to_response
-
-from wedding.settings import MEDIA_URL
+from wedding.wedding_app.models import Blog, Page, Rsvp
 
 urls = {
 	'home' 			: '/',
@@ -14,10 +13,12 @@ urls = {
 }
 
 def home(request):
-	return render_to_response('home.html', {'urls' : urls})
+	page = Page.objects.filter(name="Home")
+	return render_to_response('page.html', {'urls' : urls, 'page' : page})
 
 def blog(request):
-	return render_to_response('blog.html', {'urls' : urls})
+	blogs = Blog.objects.all().order_by("-updated")
+	return render_to_response('blog.html', {'urls' : urls, 'blogs' : blogs})
 
 def about(request):
 	return render_to_response('about.html', {'urls' : urls})

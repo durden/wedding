@@ -2,7 +2,13 @@
 
 {% block title %} Blog {% endblock %}
 
-{% block header %} What we're doing {% endblock %}
 {% block content %}
-	<p>Blog page content</p>
+	{% for blog in blogs %}
+		<div class='blog'>
+			<h4>{{blog.title}}</h4>
+			<p class='blog_txt'>{{blog.text}}</p>
+			<h6>{{blog.author.username}} -- {{blog.updated|date:"F d, Y"}}</h6>
+			<hr>
+		</div>
+	{% endfor %}
 {% endblock %}
