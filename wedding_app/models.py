@@ -10,7 +10,8 @@ class Page(models.Model):
 		return self.name
 
 class Rsvp(models.Model):
-	name = models.CharField(max_length=30)
+	first_name = models.CharField(max_length=20)
+	last_name = models.CharField(max_length=20)
 	guests = models.PositiveSmallIntegerField()
 	email = models.EmailField()
 

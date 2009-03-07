@@ -25,20 +25,29 @@ def about(request):
 	return render_to_response('page.html', {'urls' : urls, 'page' : page})
 
 def rsvp(request):
-	if request.method == 'POST':
-		name = request.POST.get('name', '')
-		guests = request.POST.get('guests', '0')
+	if request.method != 'POST':
+		return render_to_response('rsvp.html', {'urls' : urls, 'status' : 0})
 
-		#FIXME Sanitize input and make sure they aren't already in the db
+	first = request.POST.get('first', '')
+	last = request.POST.get('last', '')
+	num = request.POST.get('guests', '0')
 
-		if name == '' or guests == 0:
-			return render_to_response('rsvp.html', {'urls' : urls, 'submit' : 1,
-									  'fail' : 1})
-		else:
-			return render_to_response('rsvp.html', {'urls' : urls, 'name' : name,
-									  'guests' : guests, 'submit' : 1, 'fail' : 0})
+	if first == '' or last == '' or num == 0:
+		return render_to_response('rsvp.html', {'urls' : urls, 'status' : -1})
 	else:
-		return render_to_response('rsvp.html', {'urls' : urls})
+		try:
+			rsvp = Rsvp.objects.get(first_name=first, last_name=last)
+		except Rsvp.DoesNotExist:
+			# Insert
+			rsvp = Rsvp(first_name=first, last_name=last, guests=num)
+		else:
+			# Update
+			rsvp.guests = num
+
+		rsvp.save()
+
+		return render_to_response('rsvp.html', {'urls' : urls, 'first' : first,
+						  'last' : last, 'guests' : num, 'status' : 1})
 
 def contact(request):
 	return render_to_response('contact.html', {'urls' : urls})
