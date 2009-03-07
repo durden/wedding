@@ -4,22 +4,26 @@
 
 {% block content %}
 
-	{% if submit %}
-		{% if fail %}
-			<p class="error">Please enter your name and the number of guests.</p>
-		{% else %}
-			<p class="success">Thanks, {{name}} for your RSVP.</br>
-				We will be expecting all {{guests}} of you!
-			</p>
-		{% endif %}
-	{% endif %}
+{% ifequal status -1 %}
+	<p class="error">Please enter your name and the number of guests.</p>
+{% endifequal %}
+
+{% ifequal status 1 %}
+	<p class="success">Thanks, {{first_name}} {{last_name}} for your RSVP.</br>
+		We will be expecting all {{guests}} of you!
+	</p>
+{% endifequal %}
 
 	<form action="/rsvp/" id="rsvp" method="post">
 		<fieldset>
 			<legend>Who's Coming</legend>
 			<p>
-				<label for="name">Your name:*</label>
-				<input type="text" id="name" name="name"/>
+				<label for="first">First name:*</label>
+				<input type="text" id="first" name="first"/>
+			</p>
+			<p>
+				<label for="last">Last name:*</label>
+				<input type="text" id="last" name="last"/>
 			</p>
 			<p>
 				<label for="guests">Guests (including you)*:</label>

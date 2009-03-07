@@ -10,9 +10,14 @@
 		<div id="header">
 			<h1>{% block header %} Wedding {% endblock %}</h1>
 			<ul id="nav">
-			{% for name,link in urls.items %}
-				<li> <a href="{{link}}">{{name}}</a> {% if not forloop.last %} | {% endif %} </li>
-			{% endfor %}
+				<li> <a href="/">Home</a> | </li>
+				<li> <a href="/about">About</a> | </li>
+				<li> <a href="/pictures">Pictures</a> | </li>
+				<li> <a href="/blog">Blog</a> | </li>
+				<li> <a href="/maps">Maps</a> | </li>
+				<li> <a href="/rsvp">RSVP</a> | </li>
+				<li> <a href="/registrations">Registration Locations</a> | </li>
+				<li> <a href="/contact">Contact Us</a></li>
 			</ul>
 		</div>
 
