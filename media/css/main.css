@@ -1,12 +1,69 @@
-h1 {
-	font-size: 6pt;
+body {
+	font-size: 12pt;
+	font-family: Arial, Verdana, Helvetia, sans-serif;
+	padding: 0px;
+	margin: 0px;
+	color: #260015;
 }
 
-#nav { 
+#header {
+	height: 104px;
+	background: #ccc url(/wmedia/img/texture.jpg) repeat-x;
+	padding: 0px;
+	margin: 0px;
+	text-align: left;
+	color: #000000;
+}
+
+#header h1 {
+	padding: 10px;
+	margin: 0px;
+}
+
+.border {
+	padding: 10px;
+	margin: 0px;
+	color: #9c2769;
+}
+
+#header img {
+	padding: 0px 10px 0px 10px;
+}
+
+#nav {
+	text-align: left;
+	float: left;
+	margin: 0px 50px 50px 0px;
+	padding: 0px;
+}
+
+#main {
+	width: 900px;
+	text-align: left;
+	margin: 20px 0px 0px 30px;
+}
+
+#content {
+	float: left;
+}
+
+#rsvp fieldset {
+	text-align: left;
+}
+
+#rsvp label {
+	margin: 10px;
+}
+
+#rsvp select {
+	width: 100px;
+}
+
+#footer {
+	border-top: 5px solid #9c2769;
+	clear: left;
+	text-align: center;
+	font-size: 10pt;
+	padding: 5px;
 	font-weight: bold;
-	border-bottom: 1px solid #000;
-}
-
-#nav li {
-	display: inline;
 }

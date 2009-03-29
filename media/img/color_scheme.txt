@@ -1,0 +1,3 @@
+link_bkg - #2b0b1d
+borders - #9c2769
+text - #260015
