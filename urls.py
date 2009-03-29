@@ -3,6 +3,7 @@ from wedding.views import *
 from django.contrib import admin
 from django.conf.urls.defaults import *
 from wedding.wedding_app.models import Blog
+from django.conf import settings
 
 admin.autodiscover()
 
@@ -34,3 +35,8 @@ urlpatterns = patterns('django.views.generic.date_based',
 	# FIXME
 	#(r'^blog/(?P<year>\d{4})/(?P<month>[a-z]{3})/(?P<day>\w{1,2})/$', 'archive_day', info),
 )
+
+if settings.DEBUG:
+    urlpatterns += patterns('',
+        (r'^wmedia/(?P<path>.*)$', 'django.views.static.serve',
+		{'document_root': settings.STATIC_MEDIA_URL, 'show_indexes' : True}),)
