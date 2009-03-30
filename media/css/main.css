@@ -19,20 +19,23 @@ body {
 }
 
 h1 {
-	font-size: 20pt;
+	font-size: 22pt;
 	display: inline;
 	margin-right: 200px;
 }
 
 h2 {
-	font-size: 18pt;
+	font-size: 20pt;
 	display: inline;
 }
 
-.border {
-	padding: 10px;
-	margin: 0px;
-	color: #9c2769;
+h3 {
+	font-size: 16pt;
+}
+
+#main {
+	text-align: left;
+	margin: 20px 0px 0px 30px;
 }
 
 #header img {
@@ -47,7 +50,7 @@ h2 {
 	border-right: 2px solid #9c2769;
 }
 
-ul#nav {
+#left ul#nav {
 	list-style-type: none;
 	padding: 0px;
 	margin: 0px;
@@ -78,9 +81,8 @@ ul#nav {
 	font-size: 16pt;
 }
 
-#main {
-	text-align: left;
-	margin: 20px 0px 0px 30px;
+#left #update {
+	margin: 40px 0px 0px 0px;
 }
 
 #content {
