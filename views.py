@@ -44,9 +44,9 @@ def contact(request):
 def maps(request):
 	return render_to_response('maps.html', {'active' : 'maps'})
 
-def registrations(request):
+def gifts(request):
 	page = Page.objects.get(name="Registration Places")
-	return render_to_response('page.html', {'page' : page, 'active' : 'reg'})
+	return render_to_response('page.html', {'page' : page, 'active' : 'gifts'})
 
 def pictures(request):
 	return render_to_response('pictures.html', {'active' : 'pics'})
