@@ -2,27 +2,46 @@
 
 <html>
 	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 		<link rel="stylesheet" type="text/css" href="/wmedia/css/main.css" media="screen">
 		<title> {% block title %} {% endblock %} </title>
 	</head>
 	<body>
 		<div id="header">
-			<img src="/wmedia/img/treble.png" width="77" height="94"/>
+			<img src="/wmedia/img/treble.png" width="77" height="94" alt="treble_clef">
+			<h1>Luke and Natalie</h1>
+			<span>October 17, 2009</span>
 		</div>
 
 		<div id="main">
 			<ul id="nav">
-				<li> <a href="/">Home</a></li>
-				<li> <a href="/about">About</a></li>
-				<li> <a href="/pictures">Pictures</a></li>
-				<li> <a href="/blog">Blog</a></li>
-				<li> <a href="/maps">Maps</a></li>
-				<li> <a href="/rsvp">RSVP</a></li>
-				<li> <a href="/registrations">Registration Locations</a></li>
-				<li> <a href="/contact">Contact Us</a></li>
+				<li class="{% ifequal active "home" %}active{% else %}inactive{% endifequal %}">
+					<a href="/">Home</a>
+				</li>
+				<li class="{% ifequal active "about" %}active{% else %}inactive{% endifequal %}">
+					<a href="/about">About</a>
+				</li>
+				<li class="{% ifequal active "pics" %}active{% else %}inactive{% endifequal %}">
+					<a href="/pictures">Pictures</a>
+				</li>
+				<li class="{% ifequal active "blog" %}active{% else %}inactive{% endifequal %}">
+					<a href="/blog">Blog</a>
+				</li>
+				<li class="{% ifequal active "maps" %}active{% else %}inactive{% endifequal %}">
+					<a href="/maps">Maps</a>
+				</li>
+				<li class="{% ifequal active "rsvp" %}active{% else %}inactive{% endifequal %}">
+					<a href="/rsvp">RSVP</a>
+				</li>
+				<li class="{% ifequal active "reg" %}active{% else %}inactive{% endifequal %}">
+					<a href="/registrations">Gift Registry</a>
+				</li>
+				<li class="{% ifequal active "contact" %}active{% else %}inactive{% endifequal %}">
+					<a href="/contact">Contact Us</a>
+				</li>
 			</ul>
 			<div id="content">
-				<h1>{% block header %} Wedding {% endblock %}</h1>
+				<h2>{% block header %} Wedding {% endblock %}</h2>
 				{% block content %} {% endblock %}
 			</div>
 		</div>
