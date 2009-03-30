@@ -14,32 +14,36 @@
 		</div>
 
 		<div id="main">
-			<ul id="nav">
-				<li class="{% ifequal active "home" %}active{% else %}inactive{% endifequal %}">
-					<a href="/">Home</a>
-				</li>
-				<li class="{% ifequal active "about" %}active{% else %}inactive{% endifequal %}">
-					<a href="/about">About</a>
-				</li>
-				<li class="{% ifequal active "pics" %}active{% else %}inactive{% endifequal %}">
-					<a href="/pictures">Pictures</a>
-				</li>
-				<li class="{% ifequal active "blog" %}active{% else %}inactive{% endifequal %}">
-					<a href="/blog">Blog</a>
-				</li>
-				<li class="{% ifequal active "maps" %}active{% else %}inactive{% endifequal %}">
-					<a href="/maps">Maps</a>
-				</li>
-				<li class="{% ifequal active "rsvp" %}active{% else %}inactive{% endifequal %}">
-					<a href="/rsvp">RSVP</a>
-				</li>
-				<li class="{% ifequal active "gifts" %}active{% else %}inactive{% endifequal %}">
-					<a href="/gifts">Gift Registry</a>
-				</li>
-				<li class="{% ifequal active "contact" %}active{% else %}inactive{% endifequal %}">
-					<a href="/contact">Contact Us</a>
-				</li>
-			</ul>
+			<div id="left">
+				<ul id="nav">
+                    <li class="{% ifequal active "home" %}active{% else %}inactive{% endifequal %}">
+                        <a href="/">Home</a>
+                    </li>
+                    <li class="{% ifequal active "about" %}active{% else %}inactive{% endifequal %}">
+                        <a href="/about">About</a>
+                    </li>
+                    <li class="{% ifequal active "pics" %}active{% else %}inactive{% endifequal %}">
+                        <a href="/pictures">Pictures</a>
+                    </li>
+                    <li class="{% ifequal active "blog" %}active{% else %}inactive{% endifequal %}">
+                        <a href="/blog">Blog</a>
+                    </li>
+                    <li class="{% ifequal active "maps" %}active{% else %}inactive{% endifequal %}">
+                        <a href="/maps">Maps</a>
+                    </li>
+                    <li class="{% ifequal active "rsvp" %}active{% else %}inactive{% endifequal %}">
+                        <a href="/rsvp">RSVP</a>
+                    </li>
+                    <li class="{% ifequal active "gifts" %}active{% else %}inactive{% endifequal %}">
+                        <a href="/gifts">Gift Registry</a>
+                    </li>
+                    <li class="{% ifequal active "contact" %}active{% else %}inactive{% endifequal %}">
+                        <a href="/contact">Contact Us</a>
+                    </li>
+				</ul>
+                <!-- This should be a seperate tempate -->
+				<div id="update">Latest Updates</div>
+			</div>
 			<div id="content">
 				<h2>{% block header %} Wedding {% endblock %}</h2>
 				{% block content %} {% endblock %}
