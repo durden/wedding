@@ -12,3 +12,13 @@ The project is slated to support the following at a minimum:
 - Send e-mail to specified account when rsvp is received
 
 - Currently working admin site with django rev. 9964 of the 1.0.x branch
+
+TODO:
+- Validate all pages
+- Validate css
+- Test on existing host
+- Look into django photo galleries
+- Hook up mysql/postgres?
+- Test in diff. browsers (IE, Safari)
+- Add html/css validator icons
+- Add credit for images
