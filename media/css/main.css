@@ -4,6 +4,7 @@ body {
 	padding: 0px;
 	margin: 0px;
 	color: #260015;
+    width: 99%;
 }
 
 #header {
@@ -38,6 +39,7 @@ h4 {
 }
 
 #main {
+    float: left;
 	text-align: left;
 	margin: 20px 0px 0px 30px;
 }
@@ -49,6 +51,7 @@ h4 {
 #left {
 	text-align: left;
 	float: left;
+    width: 250px;
 	margin: 0px 50px 20px 0px;
 	padding: 0px 30px 0px 0px;
 	border-right: 2px solid #9c2769;
@@ -94,7 +97,7 @@ h4 {
 }
 
 #content {
-	float: left;
+    margin: 0px 50px 0px 300px;
 }
 
 #rsvp fieldset {
@@ -110,9 +113,7 @@ h4 {
 }
 
 div.blog {
-    float: left;
     border-bottom: 1px solid #9c2769;
-    width: 100%;
 }
 
 #footer {
