@@ -2,6 +2,7 @@
 
 {% block title %} {{page.name}} {% endblock %}
 
+{% block header %} {{page.name}} {% endblock %}
 {% block content %}
 	<p>{{page.text|safe}}</p>
 	<p class='smalltxt'>Updated: {{page.updated|date:"F d, Y"}}</p>
