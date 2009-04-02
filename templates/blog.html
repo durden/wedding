@@ -4,11 +4,10 @@
 
 {% block content %}
 	{% for blog in blogs %}
-		<div class='blog'>
-			<h4>{{blog.title}}</h4>
-			<p class='blog_txt'>{{blog.text}}</p>
-			<h6>{{blog.author.username}} -- {{blog.updated|date:"F d, Y"}}</h6>
-			<hr>
-		</div>
+        <div class='blog'>
+            <h4>{{blog.title}}</h4>
+            <p>{{blog.text}}</p>
+            <p class='author'>{{blog.author.username}} -- {{blog.updated|date:"F d, Y"}}</p>
+        </div>
 	{% endfor %}
 {% endblock %}
