@@ -5,26 +5,25 @@
 
 {% block content %}
 
-{% ifequal status -1 %}
-	<p class="error">Please enter your name and the number of guests.</p>
-{% endifequal %}
-
 {% ifequal status 1 %}
-	<p class="success">Thanks, {{first_name}} {{last_name}} for your RSVP.</br>
-		We will be expecting all {{guests}} of you!
+	<p class="success">
+        Thanks, for your RSVP. We can't wait to see you for our big day!<br>
+        Please check your e-mail for a confirmation.
 	</p>
 {% endifequal %}
 
+{% if form %}
     <p>
-        Please fill out the following form to let us know you are planning on
-        attending our wedding on October 17, 2009. Also, be sure to include
-        yourself in the guests field.
+        Please fill out the following form to let us know you are planning to
+        attend the ceremony and reception on October 17, 2009.
     </p>
-
     <p>
         Please also give us your e-mail address so you can receive updates
         about the wedding and more plans as they become available (spam free!).
         You will also receive an e-mail confirmation of your rsvp so you don't forget!
+    </p>
+    <p>
+         Be sure to include yourself in the guests field.
     </p>
 
 	<form action="/rsvp/" id="rsvp" method="post">
@@ -32,14 +31,17 @@
 			<p>
 				<label for="id_first_name">First name:*</label>
                 {{ form.first_name }}
+                <span class='error'>{{ form.first_name.errors }}</span>
 			</p>
 			<p>
 				<label for="id_last_name">Last name:*</label>
                 {{ form.last_name }}
+                <span class='error'>{{ form.last_name.errors }}</span>
 			</p>
 			<p>
 				<label for="id_email">E-mail:</label>
                 {{ form.email }}
+                <span class='error'>{{ form.email.errors }}</span>
 			</p>
 			<p>
 				<label for="id_guests">Guests*:</label>
@@ -51,9 +53,11 @@
 					<option value="5">5</option>
 					<option value="6">6</option>
 				</select>
+                <span class='error'>{{ form.guests.errors }}</span>
 			</p>
 			<input class='button' type="submit" value="submit"/>
 			<br><p>* is a required field</p>
 		</fieldset>
 	</form>
+{% endif %}
 {% endblock %}

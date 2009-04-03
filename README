@@ -21,7 +21,7 @@ TODO:
 - Add credit for images
 - Test rsvp
 - Have rsvp send e-mail when processed
-- Add e-mail addr. to rsvp
+- Make 'editing' previous rsvp a bit more obvious
 - Something to send out e-mails when something changes
 - RSS feed
 - Custom template tag for 'latest updates'

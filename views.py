@@ -19,6 +19,33 @@ def rsvp(request):
         form = RsvpForm()
         return render_to_response('rsvp.html', {'form' : form, 'status' : 0,
                                   'active' : 'rsvp'})
+    else:
+        form = RsvpForm(request.POST)
+        if form.is_valid():
+
+            first = form.cleaned_data['first_name']
+            last = form.cleaned_data['last_name']
+            guests = form.cleaned_data['guests']
+            email = form.cleaned_data['email']
+
+            try:
+                rsvp = Rsvp.objects.get(first_name=first, last_name=last)
+            # New rsvp
+            except Rsvp.DoesNotExist:
+                rsvp = Rsvp(first_name=first, last_name=last, email=email,
+                            guests=guests)
+            else:
+                rsvp.first_name = first
+                rsvp.last_name = last
+                rsvp.guests = guests
+                rsvp.email = email
+
+            rsvp.save()
+
+            return render_to_response('rsvp.html', {'active' : 'rsvp',
+                                      'status' : 1})
+        return render_to_response('rsvp.html', {'form' : form, 'status' : 0,
+                                  'active' : 'rsvp'})
 
 def contact(request):
     return render_to_response('contact.html', {'active' : 'contact'})
