@@ -1,6 +1,7 @@
 from django.shortcuts import render_to_response
 from wedding_app.models import Blog, Page, Rsvp
 from wedding_app.forms.rsvp import RsvpForm
+from django.core.mail import send_mail
 
 def home(request):
     page = Page.objects.get(name="Home")
@@ -41,6 +42,14 @@ def rsvp(request):
                 rsvp.email = email
 
             rsvp.save()
+
+            # Send email
+            msg = "A new person has entered the following rsvp via natalieandluke.com\n" + \
+                  "Name: %s %s\nE-mail: %s\nNumber of guests %d\n" % \
+                  (first, last, email, guests)
+
+            send_mail('New Wedding RSVP', msg, 'rsvp@natalieandluke.com',
+                     ['durden2.0@gmail.com'], fail_silently=True)
 
             return render_to_response('rsvp.html', {'active' : 'rsvp',
                                       'status' : 1})
