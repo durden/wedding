@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %} RSVP {% endblock %}
+{% block header %} RSVP {% endblock %}
 
 {% block content %}
 
@@ -14,20 +15,35 @@
 	</p>
 {% endifequal %}
 
+    <p>
+        Please fill out the following form to let us know you are planning on
+        attending our wedding on October 17, 2009. Also, be sure to include
+        yourself in the guests field.
+    </p>
+
+    <p>
+        Please also give us your e-mail address so you can receive updates
+        about the wedding and more plans as they become available (spam free!).
+        You will also receive an e-mail confirmation of your rsvp so you don't forget!
+    </p>
+
 	<form action="/rsvp/" id="rsvp" method="post">
 		<fieldset>
-			<legend>Who's Coming</legend>
 			<p>
-				<label for="first">First name:*</label>
-				<input type="text" id="first" name="first"/>
+				<label for="id_first_name">First name:*</label>
+                {{ form.first_name }}
 			</p>
 			<p>
-				<label for="last">Last name:*</label>
-				<input type="text" id="last" name="last"/>
+				<label for="id_last_name">Last name:*</label>
+                {{ form.last_name }}
 			</p>
 			<p>
-				<label for="guests">Guests (including you)*:</label>
-				<select id="guests" name="guests">
+				<label for="id_email">E-mail:</label>
+                {{ form.email }}
+			</p>
+			<p>
+				<label for="id_guests">Guests*:</label>
+				<select id="id_guests" name="guests">
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
@@ -36,8 +52,8 @@
 					<option value="6">6</option>
 				</select>
 			</p>
-			<input type="submit" value="submit" />
-			<p>* Requried input</p>
+			<input class='button' type="submit" value="submit"/>
+			<br><p>* is a required field</p>
 		</fieldset>
 	</form>
 {% endblock %}

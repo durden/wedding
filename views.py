@@ -1,52 +1,34 @@
 from django.shortcuts import render_to_response
-from wedding.wedding_app.models import Blog, Page, Rsvp
+from wedding_app.models import Blog, Page, Rsvp
+from wedding_app.forms.rsvp import RsvpForm
 
 def home(request):
-	page = Page.objects.get(name="Home")
-	return render_to_response('page.html', {'page' : page, 'active' : 'home'})
+    page = Page.objects.get(name="Home")
+    return render_to_response('page.html', {'page' : page, 'active' : 'home'})
 
 def blog(request):
-	blogs = Blog.objects.all().order_by("-updated")
-	return render_to_response('blog.html', {'blogs' : blogs, 'active' : 'blog'})
+    blogs = Blog.objects.all().order_by("-updated")
+    return render_to_response('blog.html', {'blogs' : blogs, 'active' : 'blog'})
 
 def about(request):
-	page = Page.objects.get(name="About Us")
-	return render_to_response('page.html', {'page' : page, 'active' : 'about'})
+    page = Page.objects.get(name="About Us")
+    return render_to_response('page.html', {'page' : page, 'active' : 'about'})
 
 def rsvp(request):
-	if request.method != 'POST':
-		return render_to_response('rsvp.html', {'status' : 0, 'active' : 'rsvp'})
-
-	first = request.POST.get('first', '')
-	last = request.POST.get('last', '')
-	num = request.POST.get('guests', '0')
-
-	if first == '' or last == '' or num == 0:
-		return render_to_response('rsvp.html', {'status' : -1, 'active' : 'rsvp'})
-	else:
-		try:
-			rsvp = Rsvp.objects.get(first_name=first, last_name=last)
-		except Rsvp.DoesNotExist:
-			# Insert
-			rsvp = Rsvp(first_name=first, last_name=last, guests=num)
-		else:
-			# Update
-			rsvp.guests = num
-
-		rsvp.save()
-
-		return render_to_response('rsvp.html', {'first' : first, 'last' : last,
-								  'guests' : num, 'status' : 1, 'active' : 'rsvp'})
+    if request.method != 'POST':
+        form = RsvpForm()
+        return render_to_response('rsvp.html', {'form' : form, 'status' : 0,
+                                  'active' : 'rsvp'})
 
 def contact(request):
-	return render_to_response('contact.html', {'active' : 'contact'})
+    return render_to_response('contact.html', {'active' : 'contact'})
 
 def maps(request):
-	return render_to_response('maps.html', {'active' : 'maps'})
+    return render_to_response('maps.html', {'active' : 'maps'})
 
 def gifts(request):
-	page = Page.objects.get(name="Registration Places")
-	return render_to_response('page.html', {'page' : page, 'active' : 'gifts'})
+    page = Page.objects.get(name="Registration Places")
+    return render_to_response('page.html', {'page' : page, 'active' : 'gifts'})
 
 def pictures(request):
-	return render_to_response('pictures.html', {'active' : 'pics'})
+    return render_to_response('pictures.html', {'active' : 'pics'})
