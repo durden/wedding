@@ -20,7 +20,7 @@ TODO:
 - Add html/css validator icons
 - Add credit for images
 - Test rsvp
-- Have rsvp send e-mail when processed
+- Generate a list/total of all current rsvps
 - Make 'editing' previous rsvp a bit more obvious
 - Something to send out e-mails when something changes
 - RSS feed
