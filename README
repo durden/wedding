@@ -16,9 +16,16 @@ The project is slated to support the following at a minimum:
 TODO:
 - Validate all pages
 - Validate css
-- Test on existing host
 - Look into django photo galleries
-- Hook up mysql/postgres?
-- Test in diff. browsers (IE, Safari)
 - Add html/css validator icons
 - Add credit for images
+- Test rsvp
+- Have rsvp send e-mail when processed
+- Add e-mail addr. to rsvp
+- Something to send out e-mails when something changes
+- RSS feed
+- Custom template tag for 'latest updates'
+- Add some pictures
+- Contact us??
+- Pagination for blogs
+- Add comments
