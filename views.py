@@ -1,6 +1,6 @@
 from django.shortcuts import render_to_response
 from wedding_app.models import Blog, Page, Rsvp
-from wedding_app.forms.forms import RsvpForm
+from wedding_app.forms.forms import RsvpForm, ContactForm
 from django.core.mail import send_mail, BadHeaderError
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 
@@ -58,9 +58,9 @@ def rsvp(request):
 
             try:
                 send_mail('New Wedding RSVP', msg, 'rsvp@natalieandluke.com',
-                         ['durden2.0@gmail.com'])
+                         ['durdenmisc@gmail.com'])
             # Header had \n in it, injection attempt
-            except BadHeaderException:
+            except BadHeaderError:
                 return render_to_response('rsvp.html', {'active' : 'rsvp',
                                           'status' : 0})
 
@@ -71,7 +71,31 @@ def rsvp(request):
                                   'active' : 'rsvp'})
 
 def contact(request):
-    return render_to_response('contact.html', {'active' : 'contact'})
+    if request.method != 'POST':
+        form = ContactForm()
+    else:
+        form = ContactForm(request.POST)
+        if form.is_valid():
+
+            subj = form.cleaned_data['subject']
+            msg = form.cleaned_data['message']
+            email = form.cleaned_data['email']
+
+            msg = 'The following message was received from natalieandluke.com\n' +\
+                  'Name: %s\nE-mail:%s\nMessage:%s\n' % (subj, email, msg)
+            try:
+                send_mail('New Wedding Message', msg, 'contact@natalieandluke.com',
+                         ['durdenmisc@gmail.com'])
+            # Header had \n in it, injection attempt
+            except BadHeaderError:
+                return render_to_response('contact.html', {'active' : 'contact',
+                                          'form' : form, 'status' : 0})
+
+            return render_to_response('contact.html', {'active' : 'contact',
+                                      'form' : form, 'status' : 1})
+
+    return render_to_response('contact.html', {'active' : 'contact', 'form' : form,
+                              'status' : 0})
 
 def maps(request):
     return render_to_response('maps.html', {'active' : 'maps'})

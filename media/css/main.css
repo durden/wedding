@@ -112,12 +112,12 @@ h4 {
     margin: 0px 50px 0px 300px;
 }
 
-#rsvp fieldset {
+fieldset {
 	text-align: left;
     border: 0px;
 }
 
-#rsvp input {
+input {
     float: left;
     margin: 0px 30px 0px 0px;
 }
@@ -128,13 +128,19 @@ h4 {
     float: left;
 }
 
-#rsvp input.button {
+#contact label {
+	margin: 0px 10px 20px 10px;
+    width: 100px;
+    float: left;
+}
+
+input.button {
 	margin: 10px;
     clear: left;
 	width: 100px;
 }
 
-#rsvp p {
+fieldset p {
     clear: left;
 }
 

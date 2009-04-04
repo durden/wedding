@@ -1,7 +1,36 @@
 {% extends "base.html" %}
 
 {% block title %} Contact Us {% endblock %}
+{% block header %} Contact Us {% endblock %}
 
 {% block content %}
-	<p>Contact Us content</p>
+
+{% ifequal status 1 %}
+	<p class="success">Thanks for your message!</p>
+{% endifequal %}
+
+{% if form %}
+	<form action="/contact/" id="contact" method="post">
+		<fieldset>
+            <legend>-- Send us a note --</legend>
+			<p>
+				<label for="id_subject">Subject:</label>
+                {{ form.subject }}
+                <span class="error">{{ form.subject.errors }}</span>
+			</p>
+			<p>
+				<label for="id_email">E-mail:</label>
+                {{ form.email }}
+                <span class="error">{{ form.email.errors }}</span>
+			</p>
+			<p>
+				<label for="id_message">Message:</label>
+                <textarea name="message" id="id_message" rows="10" cols="60"></textarea>
+                <span class='error'>{{ form.message.errors }}</span>
+			</p>
+			<input class='button' type="submit" value="submit"/>
+			<br><p>*All fields are required</p>
+		</fieldset>
+	</form>
+{% endif %}
 {% endblock %}

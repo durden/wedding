@@ -1,6 +1,11 @@
 from wedding.wedding_app.models import Rsvp
-from django.forms import ModelForm
+from django import forms
 
-class RsvpForm(ModelForm):
+class RsvpForm(forms.ModelForm):
     class Meta:
         model = Rsvp
+
+class ContactForm(forms.Form):
+    subject = forms.CharField(max_length=100)
+    message = forms.CharField()
+    email = forms.EmailField()
