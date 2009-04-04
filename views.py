@@ -63,13 +63,13 @@ def rsvp(request):
                   "Name: %s %s\nE-mail: %s\nAttending: %s\nNumber of guests %d\n" % \
                   (first, last, email, form.cleaned_data['attending'], guests)
 
-            #try:
-                #send_mail('New Wedding RSVP', msg, 'rsvp@natalieandluke.com',
-                #         ['durdenmisc@gmail.com'])
+            try:
+                send_mail('New Wedding RSVP', msg, 'rsvp@natalieandluke.com',
+                         ['durdenmisc@gmail.com'])
             # Header had \n in it, injection attempt
-            #except BadHeaderError:
-            #    return render_to_response('rsvp.html', {'active' : 'rsvp',
-            #                              'status' : 0})
+            except BadHeaderError:
+                return render_to_response('rsvp.html', {'active' : 'rsvp',
+                                          'status' : 0})
 
             return render_to_response('rsvp.html', {'active' : 'rsvp',
                                       'status' : 1, 'attending' : attending})
