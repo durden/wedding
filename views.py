@@ -1,6 +1,6 @@
 from django.shortcuts import render_to_response
 from wedding_app.models import Blog, Page, Rsvp
-from wedding_app.forms.rsvp import RsvpForm
+from wedding_app.forms.forms import RsvpForm
 from django.core.mail import send_mail, BadHeaderError
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 
