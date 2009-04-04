@@ -14,15 +14,12 @@ The project is slated to support the following at a minimum:
 - Currently working admin site with django rev. 9964 of the 1.0.x branch
 
 TODO:
-- Fix validation errors on rsvp form
+- Fix validation errors on rsvp/contact form
 - Look into django photo galleries
-- Add credit for images
 - Generate a list/total of all current rsvps
 - Make 'editing' previous rsvp a bit more obvious
 - Something to send out e-mails when something changes
 - RSS feed
 - Custom template tag for 'latest updates'
 - Add some pictures
-- Contact us??
-- Pagination for blogs
 - Add comments
