@@ -2,14 +2,22 @@ from django.shortcuts import render_to_response
 from wedding_app.models import Blog, Page, Rsvp
 from wedding_app.forms.rsvp import RsvpForm
 from django.core.mail import send_mail, BadHeaderError
+from django.core.paginator import Paginator, InvalidPage, EmptyPage
 
 def home(request):
     page = Page.objects.get(name="Home")
     return render_to_response('page.html', {'page' : page, 'active' : 'home'})
 
-def blog(request):
+def blog(request, page=1):
     blogs = Blog.objects.all().order_by("-updated")
-    return render_to_response('blog.html', {'blogs' : blogs, 'active' : 'blog'})
+    p = Paginator(blogs, 5)
+
+    try:
+        pages = p.page(page)
+    except (EmptyPage, InvalidPage):
+        pages = p.page(p.num_pages)
+
+    return render_to_response('blog.html', {'pages' : pages, 'active' : 'blog'})
 
 def about(request):
     page = Page.objects.get(name="About Us")

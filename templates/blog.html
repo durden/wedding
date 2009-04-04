@@ -4,11 +4,24 @@
 {% block header %} Blog {% endblock %}
 
 {% block content %}
-	{% for blog in blogs %}
+	{% for blog in pages.object_list %}
         <div class='blog'>
             <h4>{{blog.title}}</h4>
             <p>{{blog.text}}</p>
             <p class='smalltxt'>{{blog.author.username}} -- {{blog.updated|date:"F d, Y"}}</p>
         </div>
 	{% endfor %}
+
+{% if pages.has_previous or pages.has_next %}
+    <p>More blogs:</p>
+{% endif %}
+
+{% if pages.has_previous %}
+    <a href="/blog/{{pages.previous_page_number}}" class='smalltxt'>&lt;&lt; Newer Blogs</a>
+{% endif %}
+
+{% if pages.has_next %}
+    <a href="/blog/{{pages.next_page_number}}" class='smalltxt'>Older Blogs &gt;&gt;</a>
+{% endif %}
+
 {% endblock %}
