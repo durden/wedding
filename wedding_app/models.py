@@ -17,7 +17,7 @@ class Rsvp(models.Model):
     attending = models.BooleanField()
 
     def __unicode__(self):
-        return self.name
+        return u'%s %s' % (self.first_name, self.last_name)
 
 class Blog(models.Model):
     updated = models.DateTimeField(auto_now=True)
@@ -26,7 +26,7 @@ class Blog(models.Model):
     text = models.TextField()
 
     def __unicode__(self):
-        return self.text
+        return self.title
 
 class Comment(models.Model):
     updated = models.DateField(auto_now=True)
