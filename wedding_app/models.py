@@ -13,7 +13,7 @@ class Rsvp(models.Model):
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     guests = models.PositiveSmallIntegerField()
-    email = models.EmailField()
+    email = models.EmailField(blank=True)
     attending = models.BooleanField()
 
     def __unicode__(self):

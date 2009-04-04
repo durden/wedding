@@ -59,13 +59,19 @@ def rsvp(request):
             rsvp.save()
 
             # Send email
-            msg = "A new person has entered the following rsvp via natalieandluke.com\n" + \
+            our_msg = "A new person has entered the following rsvp via natalieandluke.com\n" + \
                   "Name: %s %s\nE-mail: %s\nAttending: %s\nNumber of guests %d\n" % \
-                  (first, last, email, form.cleaned_data['attending'], guests)
+                  (first, last, email, request.POST['attending'], guests)
+
+            their_msg = "Thanks for your Wedding RSVP.\nHere are the details so you don't" + \
+                         "forget:\nDate: October 17, 2009\nTime:n/a\nLocation:n/a\n"
 
             try:
-                send_mail('New Wedding RSVP', msg, 'rsvp@natalieandluke.com',
+                send_mail('New Wedding RSVP', our_msg, 'rsvp@natalieandluke.com',
                          ['durdenmisc@gmail.com'])
+                if rsvp.email != "":
+                    send_mail('Luke and Natalie\'s Wedding RSVP', their_msg,
+                              'rsvp@natalieandluke.com', [email, 'durdenmisc@gmail.com'])
             # Header had \n in it, injection attempt
             except BadHeaderError:
                 return render_to_response('rsvp.html', {'active' : 'rsvp',
