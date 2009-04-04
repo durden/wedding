@@ -165,3 +165,7 @@ div.blog {
 .error {
     color: #dd0000;
 }
+
+.success {
+    color: #00dd00;
+}

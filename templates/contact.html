@@ -25,7 +25,7 @@
 			</p>
 			<p>
 				<label for="id_message">Message:</label>
-                <textarea name="message" id="id_message" rows="10" cols="60"></textarea>
+                {{ form.message }}
                 <span class='error'>{{ form.message.errors }}</span>
 			</p>
 			<input class='button' type="submit" value="submit"/>
