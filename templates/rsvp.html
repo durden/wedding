@@ -7,14 +7,20 @@
 
 {% ifequal status 1 %}
 	<p class="success">
-        Thanks, for your RSVP. We can't wait to see you for our big day!<br>
-        Please check your e-mail for a confirmation.
+        Thanks, for your RSVP.
+        {% if attending %}
+            We can't wait to see you for our big day!
+            <p class="success">Please check your e-mail for a confirmation.</p>
+        {% else %}
+            We are sorry that you can't make it. Please feel free to update
+            your RSVP if you change your mind!
+        {% endif %}
 	</p>
 {% endifequal %}
 
 {% if form %}
     <p>
-        Please fill out the following form to let us know you are planning to
+        Please fill out the following form to let us if know you are planning to
         attend the ceremony and reception on October 17, 2009.
     </p>
     <p>
@@ -26,8 +32,8 @@
          Be sure to include yourself in the guests field.
     </p>
 
-	<form action="/rsvp/" id="rsvp" method="post">
-		<fieldset>
+    <fieldset id="rsvp">
+	    <form action="/rsvp/" method="post">
 			<p>
 				<label for="id_first_name">First name:*</label>
                 {{ form.first_name }}
@@ -44,7 +50,7 @@
                 <span class='error'>{{ form.email.errors }}</span>
 			</p>
 			<p>
-				<label for="id_guests">Guests*:</label>
+				<label for="id_guests">Guests:*</label>
 				<select id="id_guests" name="guests">
 					<option value="1">1</option>
 					<option value="2">2</option>
@@ -55,9 +61,14 @@
 				</select>
                 <span class='error'>{{ form.guests.errors }}</span>
 			</p>
+			<p>
+				<label for="id_attending">Attending:*</label>
+                <div id="attending">{{ form.attending }}</div>
+                <span class='error'>{{ form.attending.errors }}</span>
+			</p>
 			<input class='button' type="submit" value="submit"/>
-			<br><p>* is a required field</p>
-		</fieldset>
-	</form>
+			<br><p class='smalltxt'>* is a required field</p>
+	    </form>
+	</fieldset>
 {% endif %}
 {% endblock %}

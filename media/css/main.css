@@ -122,10 +122,31 @@ input {
     margin: 0px 30px 0px 0px;
 }
 
+fieldset ul {
+    list-style-type: none;
+}
+
+fieldset#rsvp fieldset li {
+    float: left;
+    width: 75px;
+}
+
+fieldset#rsvp li label {
+    margin: 0px;
+}
+
+fieldset#rsvp li input {
+    margin: 0px 10px 0px 0px;
+    padding: 0px;
+} 
+
 #rsvp label {
 	margin: 0px 10px 20px 10px;
     width: 150px;
     float: left;
+}
+#rsvp #attending label {
+    width: 75px;
 }
 
 #contact label {
@@ -167,5 +188,5 @@ div.blog {
 }
 
 .success {
-    color: #00ff00;
+    color: #00bb00;
 }

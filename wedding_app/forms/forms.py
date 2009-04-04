@@ -2,6 +2,8 @@ from wedding.wedding_app.models import Rsvp
 from django import forms
 
 class RsvpForm(forms.ModelForm):
+    choices = (('Yes', 'Yes'), ('No', 'No'))
+    attending = forms.BooleanField(widget=forms.RadioSelect(choices=choices))
     class Meta:
         model = Rsvp
 

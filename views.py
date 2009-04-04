@@ -32,40 +32,47 @@ def rsvp(request):
         form = RsvpForm(request.POST)
         if form.is_valid():
 
+            attending = False
             first = form.cleaned_data['first_name']
             last = form.cleaned_data['last_name']
             guests = form.cleaned_data['guests']
             email = form.cleaned_data['email']
+
+            # Don't use cleaned_data b/c it doesn't ever evaluate to false for
+            # some reason
+            if request.POST['attending'] == "Yes":
+                attending = True
 
             try:
                 rsvp = Rsvp.objects.get(first_name=first, last_name=last)
             # New rsvp
             except Rsvp.DoesNotExist:
                 rsvp = Rsvp(first_name=first, last_name=last, email=email,
-                            guests=guests)
+                            guests=guests, attending=attending)
             else:
                 rsvp.first_name = first
                 rsvp.last_name = last
                 rsvp.guests = guests
                 rsvp.email = email
+                rsvp.attending = attending
 
             rsvp.save()
 
             # Send email
             msg = "A new person has entered the following rsvp via natalieandluke.com\n" + \
-                  "Name: %s %s\nE-mail: %s\nNumber of guests %d\n" % \
-                  (first, last, email, guests)
+                  "Name: %s %s\nE-mail: %s\nAttending: %s\nNumber of guests %d\n" % \
+                  (first, last, email, form.cleaned_data['attending'], guests)
 
-            try:
-                send_mail('New Wedding RSVP', msg, 'rsvp@natalieandluke.com',
-                         ['durdenmisc@gmail.com'])
+            #try:
+                #send_mail('New Wedding RSVP', msg, 'rsvp@natalieandluke.com',
+                #         ['durdenmisc@gmail.com'])
             # Header had \n in it, injection attempt
-            except BadHeaderError:
-                return render_to_response('rsvp.html', {'active' : 'rsvp',
-                                          'status' : 0})
+            #except BadHeaderError:
+            #    return render_to_response('rsvp.html', {'active' : 'rsvp',
+            #                              'status' : 0})
 
             return render_to_response('rsvp.html', {'active' : 'rsvp',
-                                      'status' : 1})
+                                      'status' : 1, 'attending' : attending})
 
         return render_to_response('rsvp.html', {'form' : form, 'status' : 0,
                                   'active' : 'rsvp'})
