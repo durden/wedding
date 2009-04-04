@@ -1,7 +1,7 @@
 from django.shortcuts import render_to_response
 from wedding_app.models import Blog, Page, Rsvp
 from wedding_app.forms.rsvp import RsvpForm
-from django.core.mail import send_mail
+from django.core.mail import send_mail, BadHeaderError
 
 def home(request):
     page = Page.objects.get(name="Home")
@@ -48,11 +48,17 @@ def rsvp(request):
                   "Name: %s %s\nE-mail: %s\nNumber of guests %d\n" % \
                   (first, last, email, guests)
 
-            send_mail('New Wedding RSVP', msg, 'rsvp@natalieandluke.com',
-                     ['durden2.0@gmail.com'], fail_silently=True)
+            try:
+                send_mail('New Wedding RSVP', msg, 'rsvp@natalieandluke.com',
+                         ['durden2.0@gmail.com'])
+            # Header had \n in it, injection attempt
+            except BadHeaderException:
+                return render_to_response('rsvp.html', {'active' : 'rsvp',
+                                          'status' : 0})
 
             return render_to_response('rsvp.html', {'active' : 'rsvp',
                                       'status' : 1})
+
         return render_to_response('rsvp.html', {'form' : form, 'status' : 0,
                                   'active' : 'rsvp'})
 
