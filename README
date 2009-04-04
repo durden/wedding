@@ -14,12 +14,9 @@ The project is slated to support the following at a minimum:
 - Currently working admin site with django rev. 9964 of the 1.0.x branch
 
 TODO:
-- Validate all pages
-- Validate css
+- Fix validation errors on rsvp form
 - Look into django photo galleries
-- Add html/css validator icons
 - Add credit for images
-- Test rsvp
 - Generate a list/total of all current rsvps
 - Make 'editing' previous rsvp a bit more obvious
 - Something to send out e-mails when something changes
