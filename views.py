@@ -71,7 +71,7 @@ def rsvp(request):
                          ['durdenmisc@gmail.com'])
                 if rsvp.email != "":
                     send_mail('Luke and Natalie\'s Wedding RSVP', their_msg,
-                              'rsvp@natalieandluke.com', [email, 'durdenmisc@gmail.com'])
+                              'rsvp@natalieandluke.com', [email, 'rsvp@natalieandluke.com'])
             # Header had \n in it, injection attempt
             except BadHeaderError:
                 return render_to_response('rsvp.html', {'active' : 'rsvp',
