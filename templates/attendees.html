@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %} RSVP {% endblock %}
+{% block header %} Current RSVP's {% endblock %}
+
+{% block content %}
+    <p>Total Guests: {{total}}</p>
+    <table cellspacing="0" cellpadding="3" id="attendees">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>E-mail</th>
+            <th>Guests</th>
+            <th>Attending</th>
+        </tr>
+        {% for rsvp in rsvps %}
+            <tr class="hover" on>
+                <td>{{rsvp.first_name}}</td>
+                <td>{{rsvp.last_name}}</td>
+                <td>{{rsvp.email}}</td>
+                <td>{{rsvp.guests}}</td>
+                <td>{% if rsvp.attending %} Yes {% else %} No {% endif %}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

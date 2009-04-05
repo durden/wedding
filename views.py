@@ -119,3 +119,12 @@ def gifts(request):
 
 def pictures(request):
     return render_to_response('pictures.html', {'active' : 'pics'})
+
+def attendees(request):
+    rsvps = Rsvp.objects.all().order_by("-last_name")
+    total = 0
+    for rsvp in rsvps:
+        if rsvp.attending:
+            total = total + rsvp.guests
+    return render_to_response('attendees.html', {'active' : 'rsvp', 'rsvps' : rsvps,
+                              'total' : total})

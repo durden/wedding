@@ -190,3 +190,24 @@ div.blog {
 .success {
     color: #00bb00;
 }
+
+#attendees th {
+    padding: 10px;
+    text-align: center;
+    color: #260015;
+    border-bottom: 1px solid #260015;
+}
+
+#attendees tr {
+    padding: 10px;
+}
+
+#attendees td {
+    border-bottom: 1px solid #260015;
+    text-align: center;
+}
+
+#attendees tr.hover:hover {
+    background-color: #d1d1d1;
+    width: 100%;
+}

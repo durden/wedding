@@ -32,6 +32,7 @@ urlpatterns = patterns('django.views.generic.date_based',
 	(r'^maps/$', maps),
 	(r'^gifts/$', gifts),
 	(r'^pictures/$', pictures),
+	(r'^attendees/$', attendees),
 	(r'^blog/(?P<year>\d{4})/$','archive_year', blog_info),
 	# FIXME
 	#(r'^blog/(?P<year>\d{4})/(?P<month>[a-z]{3})/(?P<day>\w{1,2})/$', 'archive_day', info),
