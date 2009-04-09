@@ -60,7 +60,8 @@ def rsvp(request):
 
             # Send email
             our_msg = "A new person has entered the following rsvp via natalieandluke.com\n" + \
-                  "Name: %s %s\nE-mail: %s\nAttending: %s\nNumber of guests %d\n" % \
+                  "Name: %s %s\nE-mail: %s\nAttending: %s\nNumber of guests %d\n\n\n" + \
+                  "See all current rsvps: www.natalieandluke.com/attendees" % \
                   (first, last, email, request.POST['attending'], guests)
 
             their_msg = "Thanks for your Wedding RSVP.\nHere are the details so you don't" + \
@@ -121,7 +122,7 @@ def pictures(request):
     return render_to_response('pictures.html', {'active' : 'pics'})
 
 def attendees(request):
-    rsvps = Rsvp.objects.all().order_by("-last_name")
+    rsvps = Rsvp.objects.all().order_by("-attending", "-last_name")
     total = 0
     for rsvp in rsvps:
         if rsvp.attending:
