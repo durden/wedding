@@ -4,9 +4,12 @@ from wedding_app.forms.forms import RsvpForm, ContactForm
 from django.core.mail import send_mail, BadHeaderError
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 
+def __render_page__(name, active):
+    page = Page.objects.get(name=name)
+    return render_to_response('page.html', {'page' : page, 'active' : active})
+
 def home(request):
-    page = Page.objects.get(name="Home")
-    return render_to_response('page.html', {'page' : page, 'active' : 'home'})
+    return __render_page__("Home", "home")
 
 def blog(request, page=1):
     blogs = Blog.objects.all().order_by("-updated")
@@ -20,8 +23,7 @@ def blog(request, page=1):
     return render_to_response('blog.html', {'pages' : pages, 'active' : 'blog'})
 
 def about(request):
-    page = Page.objects.get(name="About Us")
-    return render_to_response('page.html', {'page' : page, 'active' : 'about'})
+    return __render_page__("About Us", "about")
 
 def rsvp(request):
     if request.method != 'POST':
@@ -121,8 +123,7 @@ def maps(request):
     return render_to_response('maps.html', {'active' : 'maps'})
 
 def gifts(request):
-    page = Page.objects.get(name="Registration Places")
-    return render_to_response('page.html', {'page' : page, 'active' : 'gifts'})
+    return __render_page__("Registration Places", "gifts")
 
 def pictures(request):
     return render_to_response('pictures.html', {'active' : 'pics'})
