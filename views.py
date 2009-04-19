@@ -68,7 +68,7 @@ def rsvp(request):
                       "natalieandluke.com\n" + user_info + \
                       "See all current rsvps: www.natalieandluke.com/attendees"
 
-            their_msg = "Thanks for your Wedding RSVP.\nHere are the details" + \
+            their_msg = "Thanks for your Wedding RSVP.\nHere are the details " + \
                         "so you don't forget:\nDate: October 17, 2009 " + \
                         "\nTime:n/a\nLocation:n/a\n"
 
