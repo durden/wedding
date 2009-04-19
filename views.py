@@ -58,15 +58,21 @@ def rsvp(request):
 
             rsvp.save()
 
+            # Build this string first b/c we can't append to a string with 
+            # '+' after using the %d, %s, etc. modifiers
+            # i.e this doesn't work --  x = "%s" + "a" % ('y')
+            user_info = "Name: %s %s\nE-mail: %s\nAttending: %s\nNumber of guests: %d\n\n\n" % \
+                        (first, last, email, request.POST['attending'], guests)
+
+            our_msg = "A new person has entered the following rsvp via" + \
+                      "natalieandluke.com\n" + user_info + \
+                      "See all current rsvps: www.natalieandluke.com/attendees"
+
+            their_msg = "Thanks for your Wedding RSVP.\nHere are the details" + \
+                        "so you don't forget:\nDate: October 17, 2009 " + \
+                        "\nTime:n/a\nLocation:n/a\n"
+
             # Send email
-            our_msg = "A new person has entered the following rsvp via natalieandluke.com\n" + \
-                  "Name: %s %s\nE-mail: %s\nAttending: %s\nNumber of guests %d\n\n\n" + \
-                  "See all current rsvps: www.natalieandluke.com/attendees" % \
-                  (first, last, email, request.POST['attending'], guests)
-
-            their_msg = "Thanks for your Wedding RSVP.\nHere are the details so you don't" + \
-                         "forget:\nDate: October 17, 2009\nTime:n/a\nLocation:n/a\n"
-
             try:
                 send_mail('New Wedding RSVP', our_msg, 'rsvp@natalieandluke.com',
                          ['durdenmisc@gmail.com'])
