@@ -64,7 +64,7 @@ def rsvp(request):
             user_info = "Name: %s %s\nE-mail: %s\nAttending: %s\nNumber of guests: %d\n\n\n" % \
                         (first, last, email, request.POST['attending'], guests)
 
-            our_msg = "A new person has entered the following rsvp via" + \
+            our_msg = "A new person has entered the following rsvp via " + \
                       "natalieandluke.com\n" + user_info + \
                       "See all current rsvps: www.natalieandluke.com/attendees"
 
