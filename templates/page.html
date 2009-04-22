@@ -4,6 +4,7 @@
 
 {% block header %} {{page.name}} {% endblock %}
 {% block content %}
+    <img id="page_img" src="/wmedia/img/image_1.jpg" width="300" height="200" alt="Luke and Natalie"/>
 	<p>{{page.text|safe}}</p>
 	<p class='smalltxt'>Updated: {{page.updated|date:"F d, Y"}}</p>
 {% endblock %}

@@ -1,7 +1,43 @@
 {% extends "base.html" %}
 
 {% block title %} Maps {% endblock %}
+{% block header %} Event Locations {% endblock %}
+{% block body %} <body onload="initialize()" onunload="GUnload()">{% endblock %}
+
+{% block js %}
+    <script src="http://maps.google.com/maps?file=api&v=2&key=ABQIAAAAWduJz0JhIkngc7p_Jib3CRQmAaByKjOBzkS9I2dI7r5Fk55n1hSl7jjOtvphk6AUAzykhQqRsQSKvw&sensor=false"
+                    type="text/javascript">
+    </script>
+
+    <script type="text/javascript">
+        function initialize() {
+          if (GBrowserIsCompatible()) {
+            var map = new GMap2(document.getElementById("map_canvas"));
+            map.setCenter(new GLatLng(37.4419, -122.1419), 13);
+            map.setUIToDefault();
+          }
+        }
+    </script>
+{% endblock %}
 
 {% block content %}
-	<p>Maps page content</p>
+    <ul id="addresses">
+        <li>Wedding ceremony (weather permitting):</li>
+        <li class="none">
+            <ul>
+                <li>Zilker Botanical Gardens</li>
+                <li>2220 Barton Springs Road</li>
+                <li>Austin, TX  78746</li>
+            </ul>
+        </li>
+        <li>Reception:</li>
+        <li class="none">
+            <ul>
+                <li>Mexican American Cultural Center</li>
+                <li>600 River Street</li>
+                <li>Austin, 78701</li>
+            </ul>
+        </li>
+    </ul>
+<div id="map">Map</div>
 {% endblock %}

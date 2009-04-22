@@ -5,8 +5,9 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet" type="text/css" href="/wmedia/css/main.css" media="screen">
 		<title> {% block title %} {% endblock %} </title>
+        {% block js %} {% endblock %}
 	</head>
-	<body>
+	{% block body %} <body> {% endblock %}
 		<div id="header">
 			<img src="/wmedia/img/treble.png" width="77" height="94" alt="treble_clef">
 			<h1>Luke and Natalie</h1>
