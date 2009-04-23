@@ -16,7 +16,6 @@ The project is slated to support the following at a minimum:
 TODO:
 - Fix validation errors on rsvp/contact form
 - Look into django photo galleries
-- Generate a list/total of all current rsvps
 - Make 'editing' previous rsvp a bit more obvious
 - Something to send out e-mails when something changes
 - RSS feed
