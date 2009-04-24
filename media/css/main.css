@@ -226,6 +226,16 @@ div.blog {
     width: 100%;
 }
 
+ul#latest {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px 0px 0px 10px;
+}
+
+ul#latest li {
+   margin: 0px 0px 15px 0px;
+}
+
 ul#addresses {
     margin: 0px;
     float: left;
