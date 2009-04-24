@@ -8,10 +8,11 @@ from django.conf import settings
 admin.autodiscover()
 
 blog_info = {
-	'queryset' : Blog.objects.all().order_by("-updated"),
+	'queryset' : Blog.objects.all(),
 	'date_field' : 'updated',
-	'make_object_list' : True,
-	'template_object_name' : 'blogs',
+	'template_object_name' : 'blog',
+    'template_name' : 'blog_archive_day.html',
+    'month_format' : '%m',
 }
 
 urlpatterns = patterns('django.views.generic.date_based',
@@ -33,9 +34,7 @@ urlpatterns = patterns('django.views.generic.date_based',
 	(r'^gifts/$', gifts),
 	(r'^pictures/$', pictures),
 	(r'^attendees/$', attendees),
-	(r'^blog/(?P<year>\d{4})/$','archive_year', blog_info),
-	# FIXME
-	#(r'^blog/(?P<year>\d{4})/(?P<month>[a-z]{3})/(?P<day>\w{1,2})/$', 'archive_day', info),
+	(r'^blog/(?P<year>\d{4})/(?P<month>\w{1,2})/(?P<day>\w{1,2})/$', 'archive_day', blog_info),
 )
 
 if settings.DEBUG:

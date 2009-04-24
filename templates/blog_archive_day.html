@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %} Blog {% endblock %}
+{% block header %} Blog {% endblock %}
+
+{% block content %}
+	{% for b in blog_list %}
+        <div class='blog'>
+            <h4>{{b.title}}</h4>
+            <p>{{b.text}}</p>
+            <p class='smalltxt'>{{b.author.username}} -- {{b.updated|date:"F d, Y"}}</p>
+        </div>
+	{% endfor %}
+{% endblock %}
+
