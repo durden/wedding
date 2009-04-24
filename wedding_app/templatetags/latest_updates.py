@@ -1,5 +1,5 @@
 from django import template
-from wedding_app.models import *
+from wedding.wedding_app.models import *
 
 register = template.Library()
 
