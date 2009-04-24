@@ -8,15 +8,35 @@
     <script src="http://maps.google.com/maps?file=api&v=2&key=ABQIAAAAWduJz0JhIkngc7p_Jib3CRQmAaByKjOBzkS9I2dI7r5Fk55n1hSl7jjOtvphk6AUAzykhQqRsQSKvw&sensor=false"
                     type="text/javascript">
     </script>
-
     <script type="text/javascript">
         function initialize() {
+            var locations = new Array("2220 Barton Springs Road, Austin, TX 78746, USA",
+                                      "600 River Street, Austin, TX 78701, USA");
           if (GBrowserIsCompatible()) {
-            var map = new GMap2(document.getElementById("map_canvas"));
-            map.setCenter(new GLatLng(37.4419, -122.1419), 13);
+            var map = new GMap2(document.getElementById("map"));
+            for (loc in locations) {
+                marker = add_location(map, loc, locations[loc]);
+            }
             map.setUIToDefault();
           }
         }
+        function add_location(map, center, loc) {
+            var geocoder = new GClientGeocoder();
+            var marker;
+            geocoder.getLatLng(loc,
+                function(point) {
+                    if (point) {
+                        if (center)
+                            map.setCenter(point, 13);
+                        marker = new GMarker(point);
+                        var html = "<span class='map_txt'>" + loc + "</span>";
+                        GEvent.addListener(marker, "click", function() {
+                            map.openInfoWindowHtml(point, html); });
+                        map.addOverlay(marker);
+                    }
+                });
+           return marker;
+       }
     </script>
 {% endblock %}
 

@@ -172,7 +172,8 @@ div.blog {
 }
 
 #footer {
-	border-top: 5px solid #9c2769;
+	height: 104px;
+	background: #ccc url(/wmedia/img/texture.jpg) repeat-x;
 	clear: left;
 	text-align: center;
 	font-size: 10pt;
@@ -245,7 +246,11 @@ ul#addresses li ul li {
 
 #map {
     float: left;
-    margin: 0px 0px 0px 80px;
-    width: 300px;
+    margin: 0px 0px 0px 50px;
+    width: 400px;
     height: 300px;
+}
+
+.map_txt {
+    font-size: 10pt;
 }
