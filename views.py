@@ -123,7 +123,7 @@ def maps(request):
     return render_to_response('maps.html', {'active' : 'maps'})
 
 def gifts(request):
-    return __render_page__("Registration Places", "gifts")
+    return __render_page__("Gift Registry", "gifts")
 
 def pictures(request):
     return render_to_response('pictures.html', {'active' : 'pics'})
