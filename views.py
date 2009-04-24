@@ -1,11 +1,11 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from wedding_app.models import Blog, Page, Rsvp
 from wedding_app.forms.forms import RsvpForm, ContactForm
 from django.core.mail import send_mail, BadHeaderError
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 
 def __render_page__(name, active):
-    page = Page.objects.get(name=name)
+    page = get_object_or_404(Page, name=name)
     return render_to_response('page.html', {'page' : page, 'active' : active})
 
 def home(request):
@@ -22,8 +22,8 @@ def blog(request, page=1):
 
     return render_to_response('blog.html', {'pages' : pages, 'active' : 'blog'})
 
-def about(request):
-    return __render_page__("About Us", "about")
+def story(request):
+    return __render_page__("Our Story", "story")
 
 def rsvp(request):
     if request.method != 'POST':
