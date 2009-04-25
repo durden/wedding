@@ -13,6 +13,7 @@ blog_info = {
 	'template_object_name' : 'blog',
     'template_name' : 'blog_archive_day.html',
     'month_format' : '%m',
+    'extra_context' : {'active' : 'blog'},
 }
 
 urlpatterns = patterns('django.views.generic.date_based',
