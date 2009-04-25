@@ -6,7 +6,27 @@ from django.core.paginator import Paginator, InvalidPage, EmptyPage
 
 def __render_page__(name, active):
     page = get_object_or_404(Page, name=name)
-    return render_to_response('page.html', {'page' : page, 'active' : active})
+    blogs = None
+    pages = None
+
+    # Add the 'latest' info to the homepage
+    if name == "Home":
+        blogs = Blog.objects.all().order_by("-updated")[:3]
+        pages = Page.objects.all().order_by("-updated")[:2]
+
+        # Figure out what page to link to
+        for p in pages:
+            # FIXME: Bad to hardcode these names here b/c now there are dependencies
+            #        here, views, and urls
+            if p.name == "Our Story":
+                p.link = "story"
+            elif p.name == "Gift Registry":
+                p.link = "gifts"
+            else:
+                p.link = "home"
+
+    return render_to_response('page.html', {'page' : page, 'active' : active,
+                              'blogs' : blogs, 'pages' : pages})
 
 def home(request):
     return __render_page__("Home", "home")

@@ -5,6 +5,41 @@
 {% block header %} {{page.name}} {% endblock %}
 {% block content %}
     <!--<img id="page_img" src="/wmedia/img/image_1.jpg" width="300" height="200" alt="Luke and Natalie"/>-->
+
 	<p>{{page.text|safe}}</p>
-	<p class='smalltxt'>Updated: {{page.updated|date:"F d, Y"}}</p>
+
+    {% if blogs or pages %}
+        <h4>Latest website updates</h4>
+
+        {% for blog in blogs %}
+            {% if forloop.first %}
+                <h5>Blogs</h5>
+                <ul class='latest'>
+            {% endif %}
+                    <li>
+                        <span class="smalltxt">({{ blog.updated|date:"Y/m/d" }})</span>
+                        <a href="/blog/{{ blog.updated|date:"Y/m/d" }}">{{ blog.title }}</a>
+                    </li>
+            {% if forloop.last %}
+                </ul>
+            {% endif %}
+        {% endfor %}
+
+        {% for page in pages %}
+            {% if forloop.first %}
+                <h5>Misc.</h5>
+                <ul class='latest'>
+            {% endif %}
+                    <li>
+                        <span class="smalltxt">({{ page.updated|date:"Y/m/d" }})</span>
+                        <a href="/{{ page.link }}">{{ page.name }}</a>
+                    </li>
+            {% if forloop.last %}
+                </ul>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+	    <p class='smalltxt'>Last Updated: {{page.updated|date:"F d, Y"}}</p>
+    {% endif %}
+
 {% endblock %}
