@@ -9,27 +9,40 @@
                     type="text/javascript">
     </script>
     <script type="text/javascript">
+        function Location(name, link, addr) {
+            this.name = name;
+            this.link = link;
+            this.addr = addr;
+        }
         function initialize() {
-            var locations = new Array("2220 Barton Springs Road, Austin, TX 78746, USA",
-                                      "600 River Street, Austin, TX 78701, USA");
-          if (GBrowserIsCompatible()) {
-            var map = new GMap2(document.getElementById("map"));
-            for (loc in locations) {
-                marker = add_location(map, loc, locations[loc]);
+            var mac = new Location('Mexican American Cultural Center',
+                                   'http://www.ci.austin.tx.us/macc/',
+                                   '600 River Street, Austin, TX 78701, USA');
+            var garden = new Location('Zilker Botanical Gardens',
+                                      'http://www.zilkergarden.org/',
+                                      '2220 Barton Springs Road, Austin, TX 78746, USA');
+            var locations = new Array(mac, garden);
+
+            if (GBrowserIsCompatible()) {
+                var map = new GMap2(document.getElementById("map"));
+                for (loc in locations) {
+                    marker = add_location(map, loc, locations[loc]);
+                }
+                map.setUIToDefault();
             }
-            map.setUIToDefault();
-          }
         }
         function add_location(map, center, loc) {
             var geocoder = new GClientGeocoder();
             var marker;
-            geocoder.getLatLng(loc,
+            geocoder.getLatLng(loc.addr,
                 function(point) {
                     if (point) {
                         if (center)
                             map.setCenter(point, 13);
                         marker = new GMarker(point);
-                        var html = "<span class='map_txt'>" + loc + "</span>";
+                        var link = '<a href="' + loc.link + '>' + loc.name + '<a>';
+                        var html = '<span class="map_txt">' + link + '<br>' +
+                                                              loc.addr + '</span>';
                         GEvent.addListener(marker, "click", function() {
                             map.openInfoWindowHtml(point, html); });
                         map.addOverlay(marker);
@@ -45,7 +58,7 @@
         <li>Wedding ceremony (weather permitting):</li>
         <li class="none">
             <ul>
-                <li>Zilker Botanical Gardens</li>
+                <li><a href="http://www.zilkergarden.org/">Zilker Botanical Gardens</a></li>
                 <li>2220 Barton Springs Road</li>
                 <li>Austin, TX  78746</li>
             </ul>
@@ -53,7 +66,7 @@
         <li>Reception:</li>
         <li class="none">
             <ul>
-                <li>Mexican American Cultural Center</li>
+                <li><a href="http://www.ci.austin.tx.us/macc/">Mexican American Cultural Center</a></li>
                 <li>600 River Street</li>
                 <li>Austin, 78701</li>
             </ul>

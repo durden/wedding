@@ -15,12 +15,9 @@ The project is slated to support the following at a minimum:
 
 TODO:
 - Fix validation errors on rsvp/contact form
-- Look into django photo galleries
 - Make 'editing' previous rsvp a bit more obvious
 - Something to send out e-mails when something changes
 - RSS feed
-- Custom template tag for 'latest updates'
-- Add some pictures
 - Add comments
 - Add natalie to e-mails from rsvp/contact
 - Get date/time/location for rsvp e-mail
@@ -28,9 +25,4 @@ TODO:
 - Setup analytics (hosting or google)
 - Add views with no logic to use redirect_to generic view
 - Cleanup map
-   - Center it correctly
-   - Zoom in a bit
    - Add a link for bigger map at the bottom
-   - Cleanup html on popups (add links)
-- Add links to locations in list on maps page
-- Add a countdown to homepage
