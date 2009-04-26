@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 
 {% block title %} Pictures {% endblock %}
+{% block header %} Pictures {% endblock %}
 
 {% block content %}
-	<p>Pictures page content</p>
+    {% load images %}
+    {% all_images %}
 {% endblock %}

@@ -253,6 +253,14 @@ ul#addresses li ul li {
     margin-top: 10px;
 }
 
+ul#images {
+    list-style-type: none;
+}
+
+ul#images img {
+    margin: 0px 30px 30px 0px;
+}
+
 #map {
     float: left;
     margin: 0px 0px 0px 50px;
