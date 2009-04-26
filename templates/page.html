@@ -4,8 +4,8 @@
 
 {% block header %} {{page.name}} {% endblock %}
 {% block content %}
-    <!--<img id="page_img" src="/wmedia/img/image_1.jpg" width="300" height="200" alt="Luke and Natalie"/>-->
-
+    {% load images %}
+    {% random_image %}
 	<p>{{page.text|safe}}</p>
 
     {% if blogs or pages %}
