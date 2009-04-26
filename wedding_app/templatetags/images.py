@@ -20,7 +20,7 @@ images = [
     Image('lukenatalie5.jpg', 308, 233),
     Image('lukenatalie6.jpg', 308, 233),
     Image('lukenatalie7.jpg', 308, 233),
-    Image('lukenatalie8.jpg', 308, 233),
+    #Image('lukenatalie8.jpg', 308, 233),
     Image('lukenatalie10.jpg', 308, 232),
     Image('lukenatalie11.jpg', 308, 232),
 ]
@@ -28,7 +28,7 @@ images = [
 class RandomImageNode(template.Node):
     def render(self, context):
         img = random.choice(images)
-        html = '<img id="page_img" src="/wmedia/img/%s" width="%d" height="%d" alt="Luke and Natalie"/>' % (img.name, img.width, img.height)
+        html = '<img id="page_img" src="/wmedia/img/%s" width="%d" height="%d" alt="Luke and Natalie">' % (img.name, img.width, img.height)
         return html
 
 @register.tag(name="random_image")
@@ -40,7 +40,7 @@ class AllImagesNode(template.Node):
         cnt = 0
         html = '<ul id="images">'
         for img in images:
-            img_tag = '<img src="/wmedia/img/%s" width="%d" height="%d" alt="Luke and Natalie"/>' % (img.name, img.width, img.height)
+            img_tag = '<img src="/wmedia/img/%s" width="%d" height="%d" alt="Luke and Natalie">' % (img.name, img.width, img.height)
 
             if not cnt:
                 html = html + "<li>" + img_tag
