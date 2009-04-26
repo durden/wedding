@@ -19,6 +19,7 @@
                     <li>
                         <span class="smalltxt">({{ blog.updated|date:"Y/m/d" }})</span>
                         <a href="/blog/{{ blog.updated|date:"Y/m/d" }}">{{ blog.title }}</a>
+                        <span class="smalltxt"> by: {{ blog.author.username }}</span>
                     </li>
             {% if forloop.last %}
                 </ul>

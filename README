@@ -26,3 +26,11 @@ TODO:
 - Get date/time/location for rsvp e-mail
 - Verify e-mail sending for rsvp/contact us work
 - Setup analytics (hosting or google)
+- Add views with no logic to use redirect_to generic view
+- Cleanup map
+   - Center it correctly
+   - Zoom in a bit
+   - Add a link for bigger map at the bottom
+   - Cleanup html on popups (add links)
+- Add links to locations in list on maps page
+- Add a countdown to homepage
