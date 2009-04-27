@@ -23,6 +23,7 @@ images = [
     #Image('lukenatalie8.jpg', 308, 233),
     Image('lukenatalie10.jpg', 308, 232),
     Image('lukenatalie11.jpg', 308, 232),
+    Image('lukenatalie12.jpg', 308, 232),
 ]
 
 class RandomImageNode(template.Node):
