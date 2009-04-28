@@ -1,5 +1,5 @@
 from django.shortcuts import render_to_response, get_object_or_404
-from wedding_app.models import Blog, Page, Rsvp
+from wedding_app.models import Blog, Page, Rsvp, Message
 from wedding_app.forms.forms import RsvpForm, ContactForm
 from django.core.mail import send_mail, BadHeaderError
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
@@ -120,11 +120,11 @@ def contact(request):
         if form.is_valid():
 
             subj = form.cleaned_data['subject']
-            msg = form.cleaned_data['message']
+            orig_msg = form.cleaned_data['message']
             email = form.cleaned_data['email']
 
             msg = 'The following message was received from natalieandluke.com\n' +\
-                  'Name: %s\nE-mail:%s\nMessage:%s\n' % (subj, email, msg)
+                  'Name: %s\nE-mail:%s\nMessage:%s\n' % (subj, email, orig_msg)
             try:
                 send_mail('New Wedding Message', msg, 'contact@natalieandluke.com',
                          ['durdenmisc@gmail.com'])
@@ -132,6 +132,9 @@ def contact(request):
             except BadHeaderError:
                 return render_to_response('contact.html', {'active' : 'contact',
                                           'form' : form, 'status' : 0})
+
+            msg_obj = Message(title=subj, body=orig_msg, email=email)
+            msg_obj.save()
 
             return render_to_response('contact.html', {'active' : 'contact',
                                       'form' : form, 'status' : 1})

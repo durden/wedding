@@ -36,3 +36,12 @@ class Comment(models.Model):
 
     def __unicode__(self):
         return self.text
+
+class Message(models.Model):
+    title = models.CharField(max_length=100)
+    email = models.EmailField()
+    body = models.TextField()
+    sent = models.DateField(auto_now=True)
+
+    def __unicode__(self):
+        return u'%s -- %s (%s)' % (self.title, self.email, self.sent)
