@@ -92,7 +92,10 @@ def rsvp(request):
 
             their_msg = "Thanks for your Wedding RSVP.\nHere are the details " + \
                         "so you don't forget:\nDate: October 17, 2009 " + \
-                        "\nTime:n/a\nLocation:n/a\n"
+                        "\nTime:n/a\nLocation: Zilker Botanical Gardens, Austin, Tx\n\n" +\
+                        "Directions available at http://www.www.natalieandluke.com/maps\n\n" +\
+                        "Please keep checking back to the website for more updates " +\
+                        "and information!"
 
             # Send email
             try:
