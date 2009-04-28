@@ -125,7 +125,7 @@ def contact(request):
             email = form.cleaned_data['email']
 
             msg = 'The following message was received from natalieandluke.com\n' +\
-                  'Name: %s\nSubject: %s\nE-mail:%s\nMessage:%s\n' % (name, subj, email, orig_msg)
+                  'Name: %s\nSubject: %s\nE-mail: %s\nMessage: %s\n' % (name, subj, email, orig_msg)
             try:
                 send_mail('New Wedding Message', msg, 'contact@natalieandluke.com',
                          ['durdenmisc@gmail.com', 'hill.natalie.a@gmail.com'])
