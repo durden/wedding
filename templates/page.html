@@ -6,7 +6,7 @@
 {% block content %}
     {% load images %}
     {% random_image %}
-	<p>{{page.text|safe}}</p>
+	<p>{{page.text|safe|linebreaks}}</p>
 
     {% if blogs or pages %}
         <h4>Latest website updates</h4>
