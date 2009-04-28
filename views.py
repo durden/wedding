@@ -119,12 +119,13 @@ def contact(request):
         form = ContactForm(request.POST)
         if form.is_valid():
 
+            name = form.cleaned_data['name']
             subj = form.cleaned_data['subject']
             orig_msg = form.cleaned_data['message']
             email = form.cleaned_data['email']
 
             msg = 'The following message was received from natalieandluke.com\n' +\
-                  'Name: %s\nE-mail:%s\nMessage:%s\n' % (subj, email, orig_msg)
+                  'Name: %s\nSubject: %s\nE-mail:%s\nMessage:%s\n' % (name, subj, email, orig_msg)
             try:
                 send_mail('New Wedding Message', msg, 'contact@natalieandluke.com',
                          ['durdenmisc@gmail.com', 'hill.natalie.a@gmail.com'])
@@ -133,7 +134,7 @@ def contact(request):
                 return render_to_response('contact.html', {'active' : 'contact',
                                           'form' : form, 'status' : 0})
 
-            msg_obj = Message(title=subj, body=orig_msg, email=email)
+            msg_obj = Message(name=name, title=subj, body=orig_msg, email=email)
             msg_obj.save()
 
             return render_to_response('contact.html', {'active' : 'contact',

@@ -14,6 +14,11 @@
 		<fieldset>
             <legend>-- Send us a note --</legend>
 			<p>
+				<label for="id_name">Name:</label>
+                {{ form.name }}
+                <span class="error">{{ form.name.errors }}</span>
+			</p>
+			<p>
 				<label for="id_subject">Subject:</label>
                 {{ form.subject }}
                 <span class="error">{{ form.subject.errors }}</span>

@@ -8,6 +8,7 @@ class RsvpForm(forms.ModelForm):
         model = Rsvp
 
 class ContactForm(forms.Form):
+    name = forms.CharField(max_length=100)
     subject = forms.CharField(max_length=100)
     message = forms.CharField(widget=forms.Textarea(attrs={'rows' : 10, 'cols': 60}))
     email = forms.EmailField()
