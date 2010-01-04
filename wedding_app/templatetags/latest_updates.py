@@ -1,10 +1,17 @@
+"""Latest updates tempate tag"""
+
 from django import template
-from wedding.wedding_app.models import *
+from wedding.wedding_app.models import Blog, Page
 
 register = template.Library()
 
+
 class UpdatesNode(template.Node):
+    """Node to handle updates tempate tag"""
+
     def render(self, context):
+        """Find/Show 3 most recent blogs and 2 most recent page updates"""
+
         max_title = 20
         blogs = Blog.objects.all().order_by("-updated")[:3]
         pages = Page.objects.all().order_by("-updated")[:2]
@@ -21,8 +28,8 @@ class UpdatesNode(template.Node):
             html = html + '<li><a href="/blog/%s">%s</a> %s<span class="smalltxt"> (%s)</span></li>' % \
                             (date, blog.title[:max_title], extra_str, date)
 
-        # FIXME: Bad to hardcode these names here b/c now there are dependencies
-        #        here, views, and urls
+        # FIXME: Bad to hardcode these names here b/c now there are
+        #        dependencies here, views, and urls
         for page in pages:
             date = page.updated.strftime("%Y/%m/%d")
 
@@ -33,10 +40,12 @@ class UpdatesNode(template.Node):
             else:
                 link = "home"
 
-            html = html + '<li><a href="/%s">%s</a><span class="smalltxt"> (%s)</span></li>' % (link, page.name[:max_title], date) 
+            html = html + '<li><a href="/%s">%s</a><span class="smalltxt"> (%s)</span></li>' % (link, page.name[:max_title], date)
         html = html + "</ul>"
         return html
 
+
 @register.tag(name="updates")
 def find_updates(parser, token):
+    """Updates template tag"""
     return UpdatesNode()
